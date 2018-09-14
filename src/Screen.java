@@ -20,9 +20,6 @@ public class Screen extends JFrame implements Renderable {
 		setWindowSize( width, height); 
 		setResizable(false);
 
-		//add default panel
-		setPanel(new KangalPanel());
-
 		//show
 		setVisible( true);
 		setEnabled( true);

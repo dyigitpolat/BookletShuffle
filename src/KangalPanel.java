@@ -7,11 +7,12 @@ import javax.swing.JPanel;
 public class KangalPanel extends JPanel implements Renderable {
 
 	private RenderBehaviour rb;
+	private UserInterfaceController uic;
 	
-	public KangalPanel() {
+	public KangalPanel(UserInterfaceController uic) {
 		//init
 		rb = new RenderBehaviour();
-		
+		this.uic = uic;
 		//properties
 		setBorder( BorderFactory.createLineBorder(Color.white) );
 		setBackground( Color.black);
@@ -19,6 +20,10 @@ public class KangalPanel extends JPanel implements Renderable {
 	
 	public void render() {
 		rb.perform( this);
+	}
+	
+	public UserInterfaceController getUIC() {
+		return uic;
 	}
 			
 }

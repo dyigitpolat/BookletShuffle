@@ -8,5 +8,7 @@ public class KangalLabel extends JLabel {
 		super(title);
 		setFont(new Font("Arial", 0, size));
 		setForeground(Color.WHITE);
+		setHorizontalAlignment(CENTER);
+		setVerticalAlignment(CENTER);
 	}
 }

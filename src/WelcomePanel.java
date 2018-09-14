@@ -1,4 +1,6 @@
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.Arrays;
 
 import javax.swing.*;
@@ -7,14 +9,16 @@ public class WelcomePanel extends KangalPanel {
 	KangalLabel welcomeMessage;
 	KangalLabel credit;
 	JButton proceed;
-	public WelcomePanel() {
+	
+	public WelcomePanel(UserInterfaceController uic) {
+		super(uic);
 		
 		welcomeMessage = new KangalLabel("Welcome to BookletShuffle", 30);
-		welcomeMessage.setPreferredSize( new Dimension(600, 100));
+		welcomeMessage.setPreferredSize( new Dimension(580, 100));
 		welcomeMessage.setAlignmentX(0.5f);
 		
 		credit = new KangalLabel("Doğukan Yiğit Polat - 2018", 15);
-		credit.setPreferredSize( new Dimension(600, 100));
+		credit.setPreferredSize( new Dimension(580, 100));
 		credit.setAlignmentX(0.5f);
 		
 		proceed = new JButton("Proceed");
@@ -25,7 +29,12 @@ public class WelcomePanel extends KangalPanel {
 		add(credit);
 		add(proceed);
 
-		this.setLayout( new BoxLayout(this, BoxLayout.PAGE_AXIS));
+		proceed.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                uic.setState(UIState.CONFIG);
+            }
+        });
 		
 		render();
 	}
