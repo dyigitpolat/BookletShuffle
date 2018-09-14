@@ -19,7 +19,7 @@ public class ConfigPanel extends KangalPanel {
 		questionCountSpinner = new JSpinner();
 		questionCountSpinner.setFont(new Font("Arial", 0, 20));
 		questionCountSpinner.setPreferredSize( new Dimension(60, 30));
-		questionCountSpinner.setValue(1);
+		questionCountSpinner.setValue(5);
 		questionCountSpinner.addChangeListener(new ChangeListener() {
 	        @Override
 	        public void stateChanged(ChangeEvent e) {

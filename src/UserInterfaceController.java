@@ -6,6 +6,7 @@ public final class UserInterfaceController {
 	private WelcomePanel wp;
 	private ConfigPanel cp;
 	private QuestionPanel qp;
+	private ShufflePanel sp;
 	private UIState state;
 	
 	//config
@@ -18,6 +19,7 @@ public final class UserInterfaceController {
 	
 	//control
 	private int currentQuestion = 0;
+	private int maxQuestion = 0;
 	
 	private UserInterfaceController() {
 		//init
@@ -41,6 +43,10 @@ public final class UserInterfaceController {
 			qp = new QuestionPanel(this);
 			window.setPanel(qp);
 			break;
+		case SHUFFLE:
+			sp = new ShufflePanel(this);
+			window.setPanel(sp);
+			break;
 		case DEFAULT:
 			break;
 		}
@@ -49,6 +55,7 @@ public final class UserInterfaceController {
 	public void setConfig(int questionCount, int choiceCount) {
 		this.questionCount = questionCount;
 		this.choiceCount = choiceCount;
+		questions = new ArrayList<>();
 	}
 	
 	public int getQuestionCount() {
@@ -58,14 +65,46 @@ public final class UserInterfaceController {
 	public int getChoiceCount() {
 		return choiceCount;
 	}
+	public int getCurrentQuestion() {
+		return currentQuestion;
+	}
 	
 	public Question getPreviousQuestion() {
 		return questions.get(--currentQuestion);
 	}
 	
+	public Question getQuestion() {
+		return questions.get(currentQuestion);
+	}
+	
 	public void nextQuestion( Question q) {
 		currentQuestion++;
-		questions.add(q);
+		System.out.println(currentQuestion + " "+ questionCount);
+		if(currentQuestion == questionCount) {
+			questions.add(currentQuestion-1, q);
+			maxQuestion++;
+			prepareExam();
+			setState(UIState.SHUFFLE);
+		} else {
+			if(currentQuestion > maxQuestion) {
+				questions.add(currentQuestion-1, q);
+				maxQuestion++;
+			} else {
+				questions.set(currentQuestion-1, q);
+			}
+		}
+	}
+	
+	public void prepareExam() {
+		e = new Exam(questions);
+	}
+	
+	public Exam getExam() {
+		return e;
+	}
+	
+	public int getMaxQuestion() {
+		return maxQuestion;
 	}
 	
 	public static UserInterfaceController getInstance() {
