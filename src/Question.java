@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.Collections;
 
+
 public class Question {
 	public String text;
 	public ArrayList<Choice> choices;
@@ -13,4 +14,6 @@ public class Question {
 	public void shuffle() {
 		Collections.shuffle(choices);
 	}
+	
+
 }
