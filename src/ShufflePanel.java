@@ -62,7 +62,7 @@ public class ShufflePanel extends KangalPanel{
 			for( int j = 0; j < getUIC().getChoiceCount(); j++) {
 				addNormalText(examPane, (char) ('A' + j) + ".) " + exam.questions.get(i).choices.get(j).text + "\n");
 			}
-			addNormalText(examPane, "\n");			
+			addNormalText(examPane, "\n\n");			
 		}
 		
 		for( int i = 0; i < getUIC().getQuestionCount(); i++) {

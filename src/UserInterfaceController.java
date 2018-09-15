@@ -30,6 +30,7 @@ public final class UserInterfaceController {
 	}
 	
 	public void setState(UIState state) {
+		window.setWindowSize(600, 400);
 		this.state = state;
 		switch(state) {
 		case WELCOME:
@@ -55,6 +56,8 @@ public final class UserInterfaceController {
 	public void setConfig(int questionCount, int choiceCount) {
 		this.questionCount = questionCount;
 		this.choiceCount = choiceCount;
+		currentQuestion = 0;
+		maxQuestion = 0;
 		questions = new ArrayList<>();
 	}
 	
